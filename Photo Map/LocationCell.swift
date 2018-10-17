@@ -2,8 +2,8 @@
 //  LocationCell.swift
 //  Photo Map
 //
-//  Created by Timothy Lee on 10/20/14.
-//  Copyright (c) 2014 Timothy Lee. All rights reserved.
+//  Created by Luis Mendez on 10/16/18..
+//  Copyright (c) 2018 Luis Mendez. All rights reserved.
 //
 
 import UIKit
