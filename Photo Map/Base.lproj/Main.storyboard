@@ -20,17 +20,43 @@
                     <view key="view" contentMode="scaleToFill" id="Lxe-6f-KEH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="izz-a7-pVC">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I95-iC-R2P">
+                                <rect key="frame" x="175" y="730" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="Pgz-qL-MIg"/>
+                                    <constraint firstAttribute="height" constant="64" id="uKe-W1-d6B"/>
+                                </constraints>
+                                <state key="normal" image="camera"/>
+                                <connections>
+                                    <action selector="showCamera:" destination="ghP-Ww-KKQ" eventType="touchUpInside" id="yag-H2-bOI"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.61568627450000002" green="0.67450980390000004" blue="0.74901960779999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="izz-a7-pVC" firstAttribute="top" secondItem="vrG-Wc-0bn" secondAttribute="bottom" id="0y4-1m-mbK"/>
+                            <constraint firstItem="izz-a7-pVC" firstAttribute="leading" secondItem="Lxe-6f-KEH" secondAttribute="leading" id="Nhw-8v-mf6"/>
+                            <constraint firstItem="ufw-e1-uLx" firstAttribute="top" secondItem="izz-a7-pVC" secondAttribute="bottom" id="TRH-J7-M79"/>
+                            <constraint firstItem="I95-iC-R2P" firstAttribute="centerX" secondItem="Lxe-6f-KEH" secondAttribute="centerX" id="ea7-M2-bDF"/>
+                            <constraint firstAttribute="trailing" secondItem="izz-a7-pVC" secondAttribute="trailing" id="weJ-Nu-OQz"/>
+                            <constraint firstItem="ufw-e1-uLx" firstAttribute="top" secondItem="I95-iC-R2P" secondAttribute="bottom" constant="68" id="yeR-ZY-T1L"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aPF-0T-Ydb"/>
                     <connections>
+                        <outlet property="cameraBtn" destination="I95-iC-R2P" id="E2L-yf-xUj"/>
+                        <outlet property="mapView" destination="izz-a7-pVC" id="vdO-eA-rMG"/>
                         <segue destination="eZf-Nb-6PU" kind="push" identifier="tagSegue" id="Tzv-N2-17x"/>
                         <segue destination="WeT-38-qba" kind="push" identifier="fullImageSegue" id="B5X-dM-HfZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fxu-uv-tTR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1025.5999999999999" y="-2.6986506746626691"/>
+            <point key="canvasLocation" x="1024.6376811594205" y="-3.3482142857142856"/>
         </scene>
         <!--Full Image View Controller-->
         <scene sceneID="VWW-Rb-sI4">
@@ -43,13 +69,44 @@
                     <view key="view" contentMode="scaleToFill" id="IER-PT-2nq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="99H-ck-zDa">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YTF-BL-QMm">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="YTF-BL-QMm" firstAttribute="leading" secondItem="99H-ck-zDa" secondAttribute="leading" id="Cxx-w4-JTn"/>
+                                    <constraint firstAttribute="height" secondItem="YTF-BL-QMm" secondAttribute="height" priority="250" id="PoO-ez-g3C"/>
+                                    <constraint firstAttribute="width" secondItem="YTF-BL-QMm" secondAttribute="width" priority="250" id="iTq-pQ-FPO"/>
+                                    <constraint firstAttribute="bottom" secondItem="YTF-BL-QMm" secondAttribute="bottom" id="qj1-N7-vRU"/>
+                                    <constraint firstItem="YTF-BL-QMm" firstAttribute="top" secondItem="99H-ck-zDa" secondAttribute="top" id="rvL-uD-M5V"/>
+                                    <constraint firstAttribute="trailing" secondItem="YTF-BL-QMm" secondAttribute="trailing" id="uXK-nZ-lCl"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="WeT-38-qba" id="faq-t9-J44"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" red="0.61568627450000002" green="0.67450980390000004" blue="0.74901960779999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="99H-ck-zDa" secondAttribute="trailing" id="DeV-kD-lb9"/>
+                            <constraint firstItem="N8d-FM-OAP" firstAttribute="top" secondItem="99H-ck-zDa" secondAttribute="bottom" id="HNp-Tr-XhO"/>
+                            <constraint firstItem="99H-ck-zDa" firstAttribute="top" secondItem="FF8-mr-LhG" secondAttribute="bottom" id="SiN-4u-D1D"/>
+                            <constraint firstItem="99H-ck-zDa" firstAttribute="leading" secondItem="IER-PT-2nq" secondAttribute="leading" id="hhe-HW-JXR"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HUo-VF-R6y"/>
+                    <connections>
+                        <outlet property="fullImageView" destination="YTF-BL-QMm" id="SAH-vc-dnC"/>
+                        <outlet property="scrollView" destination="99H-ck-zDa" id="5oM-zx-TZ6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRl-fe-rlf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1025.5999999999999" y="698.95052473763121"/>
+            <point key="canvasLocation" x="1024.6376811594205" y="698.4375"/>
         </scene>
         <!--Add Location-->
         <scene sceneID="iO8-f3-thv">
@@ -87,13 +144,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thai Basil" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubb-Dd-TaA">
-                                                    <rect key="frame" x="48" y="18" width="273" height="17"/>
+                                                    <rect key="frame" x="48" y="18" width="312" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="101 S Murphy Ave" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUV-fK-4vy">
-                                                    <rect key="frame" x="48" y="37" width="281" height="15"/>
+                                                    <rect key="frame" x="48" y="37" width="320" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.43902853260869568" green="0.43902853260869568" blue="0.43902853260869568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -157,4 +214,7 @@
             <point key="canvasLocation" x="174.40000000000001" y="-2.6986506746626691"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera" width="64" height="64"/>
+    </resources>
 </document>
